@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fnoneshot</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1 class="logo">fnoneshot</h1>
+      <div class="cors-toggle">
+        <label>
+          <input type="checkbox" id="cors-proxy" />
+          CORS Proxy
+        </label>
+      </div>
+    </header>
+
+    <div class="main">
+      <div class="panel panel-request">
+        <div class="url-bar">
+          <select id="method">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="PATCH">PATCH</option>
+            <option value="DELETE">DELETE</option>
+            <option value="HEAD">HEAD</option>
+            <option value="OPTIONS">OPTIONS</option>
+          </select>
+          <input type="text" id="url" placeholder="https://api.example.com/endpoint" spellcheck="false" />
+          <button id="send" title="Send (Ctrl+Enter)">Send</button>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h2>Headers</h2>
+            <button id="add-header" class="btn-sm">+ Add</button>
+          </div>
+          <div id="headers"></div>
+        </div>
+
+        <div class="section" id="body-section">
+          <h2>Body</h2>
+          <textarea id="body" placeholder='{ "key": "value" }' spellcheck="false"></textarea>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h2>History</h2>
+            <button id="clear-history" class="btn-sm">Clear</button>
+          </div>
+          <div id="history"></div>
+        </div>
+      </div>
+
+      <div class="panel panel-response">
+        <div id="response-placeholder" class="placeholder">Send a request to see the response</div>
+        <div id="response" class="hidden">
+          <div class="response-meta">
+            <span id="status-badge" class="status-badge"></span>
+            <span id="timing" class="timing"></span>
+          </div>
+          <div class="section">
+            <h2>Response Headers</h2>
+            <pre id="response-headers" class="code-block"></pre>
+          </div>
+          <div class="section">
+            <h2>Response Body</h2>
+            <pre id="response-body" class="code-block"></pre>
+          </div>
+        </div>
+        <div id="response-error" class="hidden error-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
